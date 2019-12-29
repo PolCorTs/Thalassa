@@ -101,22 +101,28 @@
       <Filter>Desenvolupament  ========\Modules\Entities</Filter>
     </ClCompile>
     <ClCompile Include="j1Gui.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClCompile>
     <ClCompile Include="j1Box.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClCompile>
     <ClCompile Include="j1Button.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClCompile>
     <ClCompile Include="j1Fonts.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClCompile>
     <ClCompile Include="j1Hud.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClCompile>
     <ClCompile Include="j1Label.cpp">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Coin.cpp">
+      <Filter>Desenvolupament  ========\Modules\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1MenuScene.cpp">
+      <Filter>Desenvolupament  ========\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,25 +247,31 @@
       <Filter>Desenvolupament  ========\Modules\Entities</Filter>
     </ClInclude>
     <ClInclude Include="j1Gui.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1Box.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1Button.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1Hud.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1Label.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
     </ClInclude>
     <ClInclude Include="j1UIElement.h">
-      <Filter>Desenvolupament  ========\Modules\GraphicInterface</Filter>
+      <Filter>Desenvolupament  ========\Modules\GraphicUserInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Coin.h">
+      <Filter>Desenvolupament  ========\Modules\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="j1MenuScene.h">
+      <Filter>Desenvolupament  ========\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -299,7 +311,7 @@
     <Filter Include="Desenvolupament  ========\Modules\Entities\Items">
       <UniqueIdentifier>{02a5d932-724d-4a1a-8961-55b0d8e8c678}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Desenvolupament  ========\Modules\GraphicInterface">
+    <Filter Include="Desenvolupament  ========\Modules\GraphicUserInterface">
       <UniqueIdentifier>{b447ac23-af99-45c9-af12-8dddc279c414}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

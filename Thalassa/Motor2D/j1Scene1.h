@@ -9,6 +9,7 @@
 #include "j1Timer.h"
 #include "p2DynArray.h"
 #include "SDL/include/SDL_mouse.h"
+#include "j1Button.h"
 
 struct SDL_Texture;
 class Animation;
@@ -87,6 +88,12 @@ public:
 	j1Timer scene_timer;
 
 	bool done_anim = false;
+
+	j1Box* settings_window = nullptr;
+
+	p2List<j1Button*> scene1Buttons;
+	p2List<j1Label*> scene1Labels;
+	p2List<j1Box*> scene1Boxes;
 
 private:
 	

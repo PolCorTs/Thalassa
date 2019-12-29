@@ -81,6 +81,7 @@
     <ClCompile Include="j1BatEnemy.cpp" />
     <ClCompile Include="j1Box.cpp" />
     <ClCompile Include="j1Button.cpp" />
+    <ClCompile Include="j1Coin.cpp" />
     <ClCompile Include="j1Collisions.cpp" />
     <ClCompile Include="j1Color.cpp" />
     <ClCompile Include="j1Demon.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="j1Audio.cpp" />
     <ClCompile Include="j1Input.cpp" />
     <ClCompile Include="j1Map.cpp" />
+    <ClCompile Include="j1MenuScene.cpp" />
     <ClCompile Include="j1MovingObstacle.cpp" />
     <ClCompile Include="j1Particle.cpp" />
     <ClCompile Include="j1Pathfinding.cpp" />
@@ -122,6 +124,7 @@
     <ClInclude Include="j1BatEnemy.h" />
     <ClInclude Include="j1Box.h" />
     <ClInclude Include="j1Button.h" />
+    <ClInclude Include="j1Coin.h" />
     <ClInclude Include="j1Collisions.h" />
     <ClInclude Include="j1Color.h" />
     <ClInclude Include="j1Demon.h" />
@@ -135,6 +138,7 @@
     <ClInclude Include="j1Label.h" />
     <ClInclude Include="j1LifeItem.h" />
     <ClInclude Include="j1Map.h" />
+    <ClInclude Include="j1MenuScene.h" />
     <ClInclude Include="j1MovingObstacle.h" />
     <ClInclude Include="j1Particle.h" />
     <ClInclude Include="j1Pathfinding.h" />

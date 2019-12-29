@@ -8,6 +8,7 @@
 #include "j1LifeItem.h"
 #include "j1JetpackItem.h"
 #include "j1Platform.h"
+#include "j1Coin.h"
 
 #include "Brofiler/Brofiler.h"
 
@@ -284,6 +285,12 @@ void j1EntityManager::SpawnEntity(const EntityInfo & info)
 				if (ret != nullptr)
 					entityList.add(ret);
 				break;
+
+			case ENTITY_TYPE::COIN:
+				ret = new j1Coin(info.position.x, info.position.y, info.type);
+
+				if (ret != nullptr)
+					entityList.add(ret);
 			}
 
 			ret->Start();

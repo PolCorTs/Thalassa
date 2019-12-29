@@ -19,6 +19,7 @@ class j1Door;
 class j1LifeItem;
 class j1Platform;
 class j1JetpackItem;
+class j1Coin;
 
 struct SDL_Texture;
 
@@ -35,6 +36,7 @@ enum ENTITY_TYPE
 	DAMAGE_ITEM,
 	POINTS_ITEM,
 	PLATFORM,
+	COIN,
 
 	NONE
 };
@@ -95,6 +97,7 @@ public:
 	j1LifeItem*			lifeItem = nullptr;
 	j1JetpackItem*		jetpackItem = nullptr;
 	j1Platform*			platform = nullptr;
+	j1Coin*				coin = nullptr;
 
 private:
 

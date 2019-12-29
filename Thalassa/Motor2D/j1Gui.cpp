@@ -9,10 +9,7 @@
 #include "j1Box.h"
 #include "j1Audio.h"
 #include "j1Window.h"
-#include "j1SceneMenu.h"
-#include "j1SceneCredits.h"
 #include "j1Scene1.h"
-#include "j1Scene2.h"
 
 #include "Brofiler/Brofiler.h"
 
@@ -95,11 +92,7 @@ bool j1Gui::PostUpdate()
 		if (App->scene1->settings_window != nullptr && App->scene1->settings_window->visible == true)
 			App->scene1->settings_window->Draw(App->gui->settingsWindowScale);
 
-	//-------------------------
-
-	if (App->scene2->settings_window != nullptr && App->scene2->settings_window->visible == true)
-		App->scene2->settings_window->Draw(App->gui->settingsWindowScale);
-
+	
 	// Blitting the buttons, labels and boxes (sliders) of the windows
 	for (p2List_item<j1Button*>* item = App->scene1->scene1Buttons.start; item != nullptr; item = item->next) {
 		if (item->data->parent == nullptr) continue;
@@ -122,37 +115,6 @@ bool j1Gui::PostUpdate()
 		}
 	}
 	for (p2List_item<j1Box*>* item = App->scene1->scene1Boxes.start; item != nullptr; item = item->next) {
-		if (item->data->parent == nullptr) continue;
-
-		if (item->data->parent->visible == false)
-			item->data->visible = false;
-		else
-			item->data->Draw(App->gui->buttonsScale);
-	}
-
-	//-------------------------
-
-	for (p2List_item<j1Button*>* item = App->scene2->scene2Buttons.start; item != nullptr; item = item->next) {
-		if (item->data->parent == nullptr) continue;
-
-		if (item->data->parent->visible == false)
-			item->data->visible = false;
-		else
-			item->data->Draw(App->gui->buttonsScale);
-	}
-	for (p2List_item<j1Label*>* item = App->scene2->scene2Labels.start; item != nullptr; item = item->next) {
-		if (item->data->parent == nullptr) continue;
-
-		if (item->data->parent->visible == false)
-			item->data->visible = false;
-		else {
-			if (item->data->text != "Settings" && item->data->text != "Save"  && item->data->text != "Quit")
-				item->data->Draw(App->gui->buttonsScale);
-			else
-				item->data->Draw();
-		}
-	}
-	for (p2List_item<j1Box*>* item = App->scene2->scene2Boxes.start; item != nullptr; item = item->next) {
 		if (item->data->parent == nullptr) continue;
 
 		if (item->data->parent->visible == false)
@@ -216,9 +178,6 @@ void j1Gui::UpdateButtonsState(p2List<j1Button*>* buttons) {
 		if (x - (App->render->camera.x / (int)App->win->GetScale()) <= button->data->position.x + button->data->situation.w * App->gui->buttonsScale
 			&& x - (App->render->camera.x / (int)App->win->GetScale()) >= button->data->position.x
 			&& y <= button->data->position.y + button->data->situation.h * App->gui->buttonsScale && y >= button->data->position.y) {
-
-			if (App->credits->active == false && App->menu->settings_window != nullptr && App->menu->settings_window->visible
-				&& button->data->bfunction != CLOSE_SETTINGS) continue;
 
 			button->data->state = STATE::HOVERED;
 			if (!button->data->hoverPlayed) {

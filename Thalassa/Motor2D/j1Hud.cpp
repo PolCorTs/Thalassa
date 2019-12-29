@@ -4,7 +4,6 @@
 #include "j1UIElement.h"
 #include "j1Label.h"
 #include "j1Scene1.h"
-//#include "j1Scene2.h"
 #include "j1Fonts.h"
 #include "j1Render.h"
 #include "j1Player.h"
@@ -15,7 +14,7 @@ j1Hud::j1Hud()
 	animation = NULL;
 	sprites = nullptr;
 
-	idle.LoadEnemyAnimations("idle", "coin");
+	idle.LoadAnimations("coinIdle");
 }
 
 j1Hud::~j1Hud() {}
@@ -30,14 +29,13 @@ bool j1Hud::Start()
 	seconds = App->gui->CreateLabel(&labels_list, LABEL, 540, 0, text, time_text.GetString());
 	minutes = App->gui->CreateLabel(&labels_list, LABEL, 450, 0, text, "00:");
 
-	score = { "%i", App->entity->player->points };
-	score_points = { "%i", App->entity->player->score_points };
+	score = { "%i", App->entity_manager->player->score };
+	score_points = { "%i", App->entity_manager->player->current_points };
 
 
 	if (App->scene1->active)
 		coins_label = App->gui->CreateLabel(&labels_list, LABEL, 80, 700, text, score.GetString(), { 255, 255, 255, 255 });
-	else if (App->scene2->active)
-		coins_label = App->gui->CreateLabel(&labels_list, LABEL, 80, 700, text, score.GetString(), { 255, 255, 255, 255 });
+
 
 	score_label = App->gui->CreateLabel(&labels_list, LABEL, 900, 0, text, score_points.GetString(), { 236, 151, 0, 255 });
 
@@ -48,60 +46,6 @@ bool j1Hud::Start()
 
 bool j1Hud::Update(float dt)
 {
-	//TIMER
-	if (App->scene1->active)
-	{
-		time_text = { "%i", App->scene1->time_scene1 };
-		if (App->scene1->time_scene1 == 60)
-		{
-			min += 1;
-			App->tex->UnLoad(minutes->sprites);
-			App->scene1->startup_time.Start();
-			time_text = { "%i", App->scene1->time_scene1 };
-			if (min < 10)
-			{
-				min_text_left.Clear();
-				min_text = { "%i", min };
-				min_text_left.operator+=("0");
-				min_text_left.operator+=(min_text);
-				min_text_left.operator+=(":");
-				minutes->sprites = App->font->Print(min_text_left.GetString(), minutes->color, minutes->font);
-			}
-			else
-			{
-				min_text = { "%i", min };
-				min_text.operator+=(":");
-				minutes->sprites = App->font->Print(min_text.GetString(), minutes->color, minutes->font);
-			}
-		}
-	}
-
-	else if (App->scene2->active)
-	{
-		time_text = { "%i", App->scene2->time_scene2 };
-		if (App->scene2->time_scene2 == 60)
-		{
-			min += 1;
-			App->tex->UnLoad(minutes->sprites);
-			App->scene2->startup_time.Start();
-			time_text = { "%i", App->scene2->time_scene2 };
-			if (min < 10)
-			{
-				min_text_left.Clear();
-				min_text = { "%i", min };
-				min_text_left.operator+=("0");
-				min_text_left.operator+=(min_text);
-				min_text_left.operator+=(":");
-				minutes->sprites = App->font->Print(min_text_left.GetString(), minutes->color, minutes->font);
-			}
-			else
-			{
-				min_text = { "%i", min };
-				min_text.operator+=(":");
-				minutes->sprites = App->font->Print(min_text.GetString(), minutes->color, minutes->font);
-			}
-		}
-	}
 
 	App->tex->UnLoad(seconds->sprites);
 	seconds->sprites = App->font->Print(time_text.GetString(), seconds->color, seconds->font);
@@ -115,17 +59,17 @@ bool j1Hud::Update(float dt)
 
 	//COIN
 	SDL_Rect r = animation->GetCurrentFrame(dt);
-	App->render->Blit(sprites, 3, 700, &r, SDL_FLIP_NONE, 1.0f, 1, 0, INT_MAX, INT_MAX, false);
+	App->render->Blit(sprites, 3, 700, &r, SDL_FLIP_NONE, 1.0f, 1, 0, INT_MAX, INT_MAX);
 	if (App->gui->debug)
 		App->render->DrawQuad({ 3, 700, r.w * 4, r.h * 4 }, 255, 0, 0, 255, false, false);
 
 	//PLAYER LIVES
 	int space = 0;
 
-	for (int i = App->entity->player->lives; i >= 0; --i)
+	for (int i = App->entity_manager->player->lifes; i >= 0; --i)
 	{
 		SDL_Rect r = { 0,0,8,11 };
-		App->render->Blit(lives_tex, 10 + space, 3, &r, SDL_FLIP_NONE, 1.0f, 1, 0, INT_MAX, INT_MAX, false);
+		App->render->Blit(lives_tex, 10 + space, 3, &r, SDL_FLIP_NONE, 1.0f, 1, 0, INT_MAX, INT_MAX);
 		if (App->gui->debug)
 			App->render->DrawQuad({ 10 + space, 3, r.w * 4, r.h * 4 }, 255, 0, 0, 255, false, false);
 
@@ -133,7 +77,7 @@ bool j1Hud::Update(float dt)
 	}
 
 	//LABELS
-	score = { "%i", App->entity->player->points };
+	score = { "%i", App->entity_manager->player->score };
 	if (coins_label != nullptr)
 	{
 		App->tex->UnLoad(coins_label->sprites);
@@ -145,7 +89,7 @@ bool j1Hud::Update(float dt)
 			App->render->DrawQuad({ 80, 700, 64, 64 }, 255, 0, 0, 255, false, false);
 	}
 
-	score_points = { "%i", App->entity->player->score_points };
+	score_points = { "%i", App->entity_manager->player->current_points };
 	if (score_label != nullptr)
 	{
 		App->tex->UnLoad(score_label->sprites);
@@ -176,8 +120,8 @@ bool j1Hud::Load(pugi::xml_node & data)
 {
 	pugi::xml_node hud = data.child("player").child("hud");
 
-	App->entity->player->score_points = hud.child("score").attribute("value").as_uint();
-	App->entity->player->points = hud.child("coins_score").attribute("value").as_uint();
+	App->entity_manager->player->current_points = hud.child("score").attribute("value").as_uint();
+	App->entity_manager->player->score = hud.child("coins_score").attribute("value").as_uint();
 
 	return true;
 }
@@ -186,8 +130,8 @@ bool j1Hud::Save(pugi::xml_node & data) const
 {
 	pugi::xml_node hud = data;
 
-	hud.append_child("coins_score").append_attribute("value") = App->entity->player->points;
-	hud.append_child("score").append_attribute("value") = App->entity->player->score_points;
+	hud.append_child("coins_score").append_attribute("value") = App->entity_manager->player->score;
+	//hud.append_child("score").append_attribute("value") = App->entity_manager->player->current_points;
 
 	return true;
 }

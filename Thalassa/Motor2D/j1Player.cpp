@@ -45,6 +45,9 @@ bool j1Player::Start() {
 
 	collider = App->collisions->AddCollider({ (int)position.x, (int)position.y, hitbox.x, hitbox.y }, COLLIDER_PLAYER, App->entity_manager);
 
+	hud = new j1Hud();
+	hud->Start();
+
 	return true;
 }
 
@@ -75,7 +78,7 @@ bool j1Player::Update(float dt)
 			if(lifePoints <= 0)
 				isDead = true;
 
-			if (playerCanMove)
+			if (playerCanMove && !App->pause)
 			{
 				PlayerMovement(dt);
 			}
@@ -145,6 +148,8 @@ bool j1Player::PostUpdate()
 
 	ColRight = ColLeft = ColDown = ColUp = onFloor = false;
 
+	hud->Update(0);
+
 	return true;
 }
 
@@ -176,6 +181,11 @@ bool j1Player::CleanUp() {
 		collider->to_delete = true;
 		collider = nullptr;
 	}
+
+	if (hud)
+		hud->CleanUp();
+
+	RELEASE(hud);
 
 	return true;
 }

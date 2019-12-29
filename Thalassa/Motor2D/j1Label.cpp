@@ -15,7 +15,7 @@ j1Label::~j1Label() {}
 void j1Label::Draw(float scale, int x, int y, bool use_camera)
 {
 	if (!use_camera)
-		App->render->Blit(sprites, (int)position.x + x, (int)position.y + y, NULL, SDL_FLIP_NONE, 1.0f, scale, 0, INT_MAX, INT_MAX, false);
+		App->render->Blit(sprites, (int)position.x + x, (int)position.y + y, NULL, SDL_FLIP_NONE, 1.0f, scale);
 	else
 		App->render->Blit(sprites, (int)position.x + x, (int)position.y + y, NULL, SDL_FLIP_NONE, 1.0f, scale);
 }

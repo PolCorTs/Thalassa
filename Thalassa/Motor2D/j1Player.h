@@ -7,6 +7,7 @@
 #include "j1Entity.h"
 #include "j1Particle.h"
 #include "j1Timer.h"
+#include "j1Hud.h"
 
 struct Collider;
 struct SDL_Texture;
@@ -51,7 +52,8 @@ public:
 	Animation jump;
 	Animation godAnim;
 	Animation deathAnim;
-
+	
+	j1Hud* hud = nullptr;
 
 public:
 	fPoint position;	
@@ -69,6 +71,8 @@ public:
 	float gravity;
 	int lifePoints;
 	float jetPackLife;
+	int score;
+	std::string current_points;
 
 	bool playerCanMove = false;
 	bool doorOpened = false;

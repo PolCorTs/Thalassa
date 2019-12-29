@@ -21,6 +21,8 @@ class j1TransitionsManager;
 class j1Particle;
 class j1Pathfinding;
 class j1Gui;
+class j1Fonts;
+class j1MenuScene;
 
 class j1App
 {
@@ -97,7 +99,9 @@ public:
 	j1TransitionsManager* transitions;
 	j1Particle*			particles;
 	j1Pathfinding*		pathfinding;
+	j1Fonts*			font;
 	j1Gui*				gui;
+	j1MenuScene*		menu;
 
 private:
 
@@ -125,6 +129,10 @@ private:
 
 	float				dt = 0.0f;
 	bool				capFPS = true;
+
+public:
+
+	bool pause = false;
 };
 
 extern j1App* App;
