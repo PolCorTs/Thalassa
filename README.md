@@ -1,5 +1,7 @@
 # Thalassa
 
+This is a forked verion from Thalassa by [Bullseye14](https://github.com/Bullseye14) and [XaviMarin35](https://github.com/xavimarin35)
+
 This is a project made by [CITM](https://www.citm.upc.edu/) students of the TTC (Tech Talent Center) in Barcelona, in which we make our own platformer game in C & C++.
 
 ## Information
@@ -54,54 +56,20 @@ IMPORTANT: *Do not modify, change or add any folder or file (unless specified) a
 
 ## Authors and accomplishments
 
+### Pol Cortés
+
+- Github: [PolCorTs](https://github.com/PolCorTs)
+
+
+#FORKED FROM
+
 ### Pol Casaú
-
 - Github: [Bullseye14](https://github.com/Bullseye14)
-- Accomplishments:
-	- Design of first and second maps (tutorial and level 1)
-	- Player movement (jump, double jump and jetpack)
-	- Camera following player
-	- Death loop and animation
-	- Transitions and changes between scenes
-	- Camera movements between levels
-	- GodMode implementation
-	- Data from XML
-	- Save & Load
-	- Camera Culling
-	- Pathfinding
-	- Bat partner
-	- Demon enemy
-	- Bat enemy
-	- Moving platforms
-	
+
 ### Xavi Marín
-
 - Github: [XaviMarin35](https://github.com/xavimarin35)
-- Accomplishments:
-	- Design third map (mid-level)
-	- Map loading
-	- Entity system
-	- Collision system
-	- Parallax
-	- Entity animations loaded from XML
-	- Animated tiles from TMX
-	- Dynamic obstacles
-	- Keys & Mouse in the tutorial level
-	- Particle system
-	- Framerate cap
-	- Enemies creation logic
-	- Enemy shots
-	- Brofiler
-	
-## Contact
 
- Don't hesitate to visit:
- - Our repository: https://github.com/xavimarin35/Thalassa 
- 
- Or contact us:
- - Pol Casau: pccpolcasau@gmail.com
- - Xavi Marín: xmarin98@gmail.com
- 
+
   
 ## License
 
